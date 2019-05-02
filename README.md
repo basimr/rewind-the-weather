@@ -1,8 +1,8 @@
 # Rewind the Weather
 
-I wish I could let you rewind the weather to one week ago, when it was brighter and sunnier...
+Don't you wish you could rewind the weather to one week ago, when it was brighter and sunnier?
 
-How about an application that lets you shop around for the best weather? The application pulls weather data from AccuWeather and OpenWeatherMap, letting you pick the weather you like better!
+Unfortunately that's impossible (for now)... But how about an application that lets you shop around for the best weather? This application allows you to view weather data from AccuWeather and OpenWeatherMap, letting you pick the weather you enjoy better!
 
 ## Installation
 

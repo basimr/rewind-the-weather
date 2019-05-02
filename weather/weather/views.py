@@ -32,7 +32,7 @@ class HomeView(View):
         city = request.POST.get("city", None)
 
         try:
-            # accuweather_data = get_accuweather(city)
+            accuweather_data = get_accuweather(city)
             openweathermap_data = get_openweathermap(city)
         except ApiException as e:
             template = "error.html"
@@ -43,7 +43,7 @@ class HomeView(View):
             return render(request, template, context)
 
         weather_datapoints = [
-            # accuweather_data,
+            accuweather_data,
             openweathermap_data,
         ]
 

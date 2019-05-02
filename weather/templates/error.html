@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1 class="title">Error {{ status_code }}</h1>
+<p>{{ error_msg }}</p>
+<br>
+<a class="button is-warning" href="/">
+    <span class="icon is-small">
+      <i class="fa fa-arrow-left"></i>
+    </span>
+    <span>Back</span>
+</a>
+{% endblock %}

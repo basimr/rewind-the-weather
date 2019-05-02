@@ -8,7 +8,15 @@ ACCUWEATHER_CITY_URL = "http://dataservice.accuweather.com/locations/v1/cities/s
 ACCUWEATHER_WEATHER_URL = "http://dataservice.accuweather.com/currentconditions/v1/{}?apikey={}&language=en-us"
 
 OPENWEATHERMAP_API_KEY = "26c6d0e1cc1a1ae2acf09ad56c31fd22"
-OPENWEATHERMAP_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Ottawa&appid={}"
+OPENWEATHERMAP_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
+
+
+class ApiException(Exception):
+    def __init__(self, status_code):
+        self.status_code = status_code
+
+    def __str__(self):
+        return "Error {}".format(self.status_code)
 
 
 class HomeView(View):
@@ -19,14 +27,24 @@ class HomeView(View):
         context = {}
         return render(request, template, context)
 
-
     @staticmethod
     def post(request):
-        city = request.POST.get('city', None)
+        city = request.POST.get("city", None)
+
+        try:
+            # accuweather_data = get_accuweather(city)
+            openweathermap_data = get_openweathermap(city)
+        except ApiException as e:
+            template = "error.html"
+            context = {
+                "status_code": e.status_code,
+                "error_msg": "We probably couldn't find the city you requested. Sorry about that!"
+            }
+            return render(request, template, context)
 
         weather_datapoints = [
-            get_accuweather(city),
-            get_openweathermap(city),
+            # accuweather_data,
+            openweathermap_data,
         ]
 
         template = "weather.html"
@@ -47,8 +65,10 @@ def get_accuweather(city):
 
     weather_url = ACCUWEATHER_WEATHER_URL.format(city_key, ACCUWEATHER_API_KEY)
     weather_rsp = requests.get(weather_url)
-    weather_data = weather_rsp.json()[0]
+    if weather_rsp.status_code != 200:
+        raise ApiException(weather_rsp.status_code)
 
+    weather_data = weather_rsp.json()[0]
     conditions = weather_data["WeatherText"]
     temperature = weather_data["Temperature"]["Metric"]["Value"]
 
@@ -63,14 +83,11 @@ def get_openweathermap(city):
     kelvin_to_celsius = lambda k: k - 273.15
 
     weather_url = OPENWEATHERMAP_WEATHER_URL.format(city, OPENWEATHERMAP_API_KEY)
-
-    # TODO delete these two lines once my OpenWeatherMap API key works...
-    sample_weather_url = "https://samples.openweathermap.org/data/2.5/weather?q=Ottawa,ON&appid=b6907d289e10d714a6e88b30761fae22"
-    weather_url = sample_weather_url
-
     weather_rsp = requests.get(weather_url)
-    weather_data = weather_rsp.json()
+    if weather_rsp.status_code != 200:
+        raise ApiException(weather_rsp.status_code)
 
+    weather_data = weather_rsp.json()
     conditions = weather_data["weather"][0]["main"]
     temperature_k = weather_data["main"]["temp"]
     temperature_c = kelvin_to_celsius(temperature_k)

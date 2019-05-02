@@ -20,6 +20,7 @@ Follow these instructions inside a bash shell, which should work whether you're 
 
 ## Notes
 
+* Since the OpenWeatherMap API is not very flexible, use just the city name in the application; for example, use "Ottawa" instead of "Ottawa, ON"  
 * In case it is helpful for you to install and run my application, I'm running Ubuntu 18.04
 * Based on the given requirements, I assumed:
   * that the application should only support searching for cities

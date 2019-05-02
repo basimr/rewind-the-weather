@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1 class="title">How's the weather today?</h1>
+
+<!--<div class="field">-->
+<!--    <div class="control level-child has-text-centered">-->
+<!--        <input class="input is-warning" type="text" name="city-field" placeholder="Enter your city...">-->
+<!--    </div>-->
+<!--</div>-->
+<!--<button class="button is-warning" id="go-button">Go!</button>-->
+
+<form method="POST" action="/">
+    {% csrf_token %}
+    <div class="field">
+        <div class="control">
+            <input class="input is-warning" type="text" name="city" placeholder="Enter your city...">
+        </div>
+        <input type="submit" style="display: none" />
+<!--        <div class="control">-->
+<!--            <button class="button is-warning" id="go-button" type="submit">Go!</button>-->
+<!--        </div>-->
+    </div>
+</form>
+
+
+<!--        <div class="field has-addons">-->
+<!--            <div class="control">-->
+<!--                <input class="input is-warning" type="text" name="city" placeholder="Enter your city...">-->
+<!--            </div>-->
+<!--            <div class="control">-->
+<!--                <a class="button is-warning">-->
+<!--                    Go!-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+{% endblock %}

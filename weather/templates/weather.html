@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+<article class="message is-warning">
+  <div class="message-header">
+    <p>AccuWeather</p>
+  </div>
+  <div class="message-body">
+      <strong>Conditions:</strong> {{ conditions|lower }}
+      <br>
+      <strong>Temperature:</strong> {{ temperature }}°C
+  </div>
+</article>
+<a class="button is-warning" href="/">
+    <span class="icon is-small">
+      <i class="fa fa-arrow-left"></i>
+    </span>
+    <span>Back</span>
+</a>
+{% endblock %}

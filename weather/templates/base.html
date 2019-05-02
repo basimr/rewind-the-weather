@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rewind the Weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        input {
+            text-align: center;
+        }
+    </style>
+<body>
+<section class="section level has-text-centered">
+    <div class="container"></div>
+    <div class="container">
+        <a href="/">
+            <i class="fa fa-sun-o" aria-hidden="true" style="font-size: 10em; color:#ffdd57"></i>
+        </a>
+        <br>
+        <br>
+        {% block body %}
+        {% endblock %}
+    </div>
+    <div class="container"></div>
+</section>
+</body>
+</html>

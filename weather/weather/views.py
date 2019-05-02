@@ -3,12 +3,12 @@ from django.views import View
 
 import requests
 
-ACCUWEATHER_API_KEY = "DPsbcTv1LENEppp4BBkNuMjnWyDESrTF"
+ACCUWEATHER_API_KEY = "WGXjPfYxPsbFYsZa9D2RBM00ScRIQVHb"
 ACCUWEATHER_CITY_URL = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey={}&q={}&language=en-us"
 ACCUWEATHER_WEATHER_URL = "http://dataservice.accuweather.com/currentconditions/v1/{}?apikey={}&language=en-us"
 
 OPENWEATHERMAP_API_KEY = "26c6d0e1cc1a1ae2acf09ad56c31fd22"
-OPENWEATHERMAP_WEATHER_URL = "https://openweathermap.org/data/2.5/weather?q={}&appid={}"
+OPENWEATHERMAP_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Ottawa&appid={}"
 
 
 class HomeView(View):
@@ -31,7 +31,8 @@ class HomeView(View):
 
         template = "weather.html"
         context = {
-            "weather_datapoints": weather_datapoints,
+            "city": city,
+            "datapoints": weather_datapoints,
         }
 
         return render(request, template, context)
@@ -39,6 +40,7 @@ class HomeView(View):
 
 def get_accuweather(city):
     city_url = ACCUWEATHER_CITY_URL.format(ACCUWEATHER_API_KEY, city)
+
     city_rsp = requests.get(city_url)
     city_data = city_rsp.json()[0]
     city_key = city_data["Key"]
@@ -61,7 +63,11 @@ def get_openweathermap(city):
     kelvin_to_celsius = lambda k: k - 273.15
 
     weather_url = OPENWEATHERMAP_WEATHER_URL.format(city, OPENWEATHERMAP_API_KEY)
-    weather_url = "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22"  # TODO change when my API key is active
+
+    # TODO delete these two lines once my OpenWeatherMap API key works...
+    sample_weather_url = "https://samples.openweathermap.org/data/2.5/weather?q=Ottawa,ON&appid=b6907d289e10d714a6e88b30761fae22"
+    weather_url = sample_weather_url
+
     weather_rsp = requests.get(weather_url)
     weather_data = weather_rsp.json()
 

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block body %}
+<h1 class="title">Weather for {{ city }}</h1>
 
-{% for datapoint in weather_datapoints %}
+{% for datapoint in datapoints %}
 <article class="message is-warning">
     <div class="message-header">
         <p>{{ datapoint.source }} says...</p>

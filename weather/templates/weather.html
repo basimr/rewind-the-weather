@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
 {% block body %}
+
+{% for datum in weather_data %}
 <article class="message is-warning">
-  <div class="message-header">
-    <p>AccuWeather</p>
-  </div>
-  <div class="message-body">
-      <strong>Conditions:</strong> {{ conditions|lower }}
-      <br>
-      <strong>Temperature:</strong> {{ temperature }}°C
-  </div>
+    <div class="message-header">
+        <p>{{ datum.source }} says...</p>
+    </div>
+    <div class="message-body">
+        <strong>Condition:</strong> {{ datum.conditions|lower }}
+        <br>
+        <strong>Temperature:</strong> {{ datum.temperature }}°C
+    </div>
 </article>
+{% endfor %}
+
 <a class="button is-warning" href="/">
     <span class="icon is-small">
       <i class="fa fa-arrow-left"></i>

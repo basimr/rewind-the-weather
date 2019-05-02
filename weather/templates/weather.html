@@ -2,15 +2,15 @@
 
 {% block body %}
 
-{% for datum in weather_data %}
+{% for datapoint in weather_datapoints %}
 <article class="message is-warning">
     <div class="message-header">
-        <p>{{ datum.source }} says...</p>
+        <p>{{ datapoint.source }} says...</p>
     </div>
     <div class="message-body">
-        <strong>Condition:</strong> {{ datum.conditions|lower }}
+        <strong>Condition:</strong> {{ datapoint.conditions|lower }}
         <br>
-        <strong>Temperature:</strong> {{ datum.temperature }}°C
+        <strong>Temperature:</strong> {{ datapoint.temperature }}°C
     </div>
 </article>
 {% endfor %}

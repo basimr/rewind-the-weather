@@ -24,14 +24,14 @@ class HomeView(View):
     def post(request):
         city = request.POST.get('city', None)
 
-        weather_data = [
+        weather_datapoints = [
             get_accuweather(city),
             get_openweathermap(city),
         ]
 
         template = "weather.html"
         context = {
-            "weather_data": weather_data,
+            "weather_datapoints": weather_datapoints,
         }
 
         return render(request, template, context)

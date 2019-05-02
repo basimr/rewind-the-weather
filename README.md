@@ -6,8 +6,9 @@ Unfortunately that's impossible (for now)... But how about an application that l
 
 ## Installation
 
-Follow these instructions if you're working in a macOs or Linux or CygWin terminal:
-1. `git clone <this-repo>`
+Follow these instructions inside a bash shell, which should work whether you're running Linux, macOs, or something like Cygwin on Windows.
+
+1. `git clone https://github.com/basimr/rewind-the-weather.git`
 2. `cd rewind-the-weather`
 3. `virtualenv -p $(which python3) env`
 4. `source env/bin/activate`

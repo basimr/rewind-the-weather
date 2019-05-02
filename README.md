@@ -27,7 +27,10 @@ Follow these instructions inside a bash shell, which should work whether you're 
 * In my database schema:
   * I separarated the `queryDatetime` from `weatherDateTime` to accomodate for the fact that weather forecasts change depending on when they are queried
   * I only included weather data that my application provides: the temperature and a short description of the weather conditions
-  
+
+## Database schema
+![database-schema-diagram](https://github.com/basimr/rewind-the-weather/blob/master/database-schema.png)
+
 ## Thank you
 
 This has been an entertaining exercise; definitely more fun than FizzBuzz. Thanks for giving me the opportunity to apply to Rewind!

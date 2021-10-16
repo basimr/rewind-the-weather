@@ -4,6 +4,9 @@ Don't you wish you could rewind the weather to one week ago, when it was brighte
 
 Unfortunately that's impossible until we have time travel... But how about an application that lets you shop around for the best weather? This application allows you to view weather data from AccuWeather and OpenWeatherMap, letting you pick the weather you enjoy better!
 
+![Main Page](images/main-page.png)
+![Weather Page](images/weather-page.png)
+
 ## Installation
 
 Follow these instructions inside a bash shell, which should work whether you're running Linux, macOs, or something like Cygwin on Windows.
@@ -25,14 +28,6 @@ Follow these instructions inside a bash shell, which should work whether you're 
 * Based on the given requirements, I assumed:
   * that the application should only support searching for cities
   * that the database schema should be designed to store weather for cities only -- no locations that are considered "not cities"
-* In my database schema:
+* In my [database schema](images/database-schema.png):
   * I separarated the `queryDatetime` from `weatherDateTime` to accomodate for the fact that weather forecasts change depending on when they are queried
   * I only included weather data that my application provides: the temperature and a short description of the weather conditions
-
-## Thank you
-
-This has been an entertaining exercise; definitely more fun than FizzBuzz. Thanks for giving me the opportunity to apply to Rewind!
-
-## Database schema
-
-![database-schema-diagram](https://github.com/basimr/rewind-the-weather/blob/master/database-schema.png)

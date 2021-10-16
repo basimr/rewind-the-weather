@@ -4,7 +4,12 @@ Don't you wish you could rewind the weather to one week ago, when it was brighte
 
 Unfortunately that's impossible until we have time travel... But how about an application that lets you shop around for the best weather? This application allows you to view weather data from AccuWeather and OpenWeatherMap, letting you pick the weather you enjoy better!
 
+## Screenshots
+
+### Main Page
 ![Main Page](images/main-page.png)
+
+### Weather Page
 ![Weather Page](images/weather-page.png)
 
 ## Installation
